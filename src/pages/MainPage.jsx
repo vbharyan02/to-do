@@ -105,7 +105,7 @@ export default function MainPage() {
   if (isLoading) return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center transition-colors">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin" />
         <p className="text-sm text-gray-500 dark:text-gray-400">Loading tasks…</p>
       </div>
     </div>
@@ -115,7 +115,7 @@ export default function MainPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center transition-colors">
       <div className="text-center">
         <p className="text-red-500 mb-3">{error}</p>
-        <button onClick={fetchTasks} className="text-sm text-blue-600 dark:text-blue-400 underline">Try again</button>
+        <button onClick={fetchTasks} className="text-sm text-yellow-600 dark:text-yellow-400 underline">Try again</button>
       </div>
     </div>
   )
@@ -126,8 +126,8 @@ export default function MainPage() {
 
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-md shadow-blue-200 dark:shadow-none">
-              <span className="text-white font-bold">✓</span>
+            <div className="w-9 h-9 bg-yellow-400 rounded-xl flex items-center justify-center shadow-md shadow-yellow-200 dark:shadow-none">
+              <span className="text-gray-900 font-bold">✓</span>
             </div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">My Tasks</h1>
           </div>
@@ -154,7 +154,7 @@ export default function MainPage() {
               key={s}
               onClick={() => setFilter(filter === s ? '' : s)}
               className={`py-3 rounded-xl border-2 text-sm font-medium transition-all ${FILTER_CARD[s]} ${
-                filter === s ? 'ring-2 ring-offset-2 ring-blue-500 dark:ring-offset-gray-900' : 'hover:opacity-80'
+                filter === s ? 'ring-2 ring-offset-2 ring-yellow-400 dark:ring-offset-gray-900' : 'hover:opacity-80'
               }`}
             >
               <span className="block text-2xl font-bold leading-none mb-1">{counts[s]}</span>
@@ -170,19 +170,19 @@ export default function MainPage() {
               placeholder="Task title *"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
+              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
             />
             <input
               placeholder="Description (optional)"
               value={description}
               onChange={e => setDescription(e.target.value)}
-              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
+              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
             />
             <input
               type="date"
               value={dueDate}
               onChange={e => setDueDate(e.target.value)}
-              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition"
             />
             <input
               type="number"
@@ -190,7 +190,7 @@ export default function MainPage() {
               placeholder="Total Time (minutes)"
               value={totalTime}
               onChange={e => setTotalTime(e.target.value)}
-              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
+              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
             />
             {formError && (
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg px-3 py-2">
@@ -200,7 +200,7 @@ export default function MainPage() {
             <button
               type="submit"
               disabled={formLoading}
-              className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 text-white px-4 py-2.5 rounded-lg w-full font-medium transition-colors"
+              className="bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 disabled:opacity-50 text-gray-900 px-4 py-2.5 rounded-lg w-full font-medium transition-colors"
             >
               {formLoading ? 'Adding…' : '+ Add Task'}
             </button>
