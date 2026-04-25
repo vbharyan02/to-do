@@ -24,6 +24,7 @@ export default function MainPage() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [dueDate, setDueDate] = useState('')
+  const [totalTime, setTotalTime] = useState('')
   const [formError, setFormError] = useState(null)
   const [formLoading, setFormLoading] = useState(false)
   const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains('dark'))
@@ -63,11 +64,12 @@ export default function MainPage() {
         title: title.trim(),
         description: description.trim() || null,
         due_date: dueDate || null,
+        total_time: totalTime !== '' ? parseInt(totalTime, 10) : null,
         status: 'todo'
       }).select().single()
       if (error) throw error
       setTasks(prev => [data, ...prev])
-      setTitle(''); setDescription(''); setDueDate('')
+      setTitle(''); setDescription(''); setDueDate(''); setTotalTime('')
     } catch (err) {
       setFormError(err.message)
     } finally {
@@ -182,6 +184,14 @@ export default function MainPage() {
               onChange={e => setDueDate(e.target.value)}
               className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             />
+            <input
+              type="number"
+              min="0"
+              placeholder="Total Time (minutes)"
+              value={totalTime}
+              onChange={e => setTotalTime(e.target.value)}
+              className="border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg px-3 py-2.5 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition placeholder-gray-400 dark:placeholder-gray-500"
+            />
             {formError && (
               <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg px-3 py-2">
                 <p className="text-red-600 dark:text-red-400 text-sm">{formError}</p>
@@ -219,6 +229,9 @@ export default function MainPage() {
                     )}
                     {task.due_date && (
                       <p className="text-xs text-gray-400 dark:text-gray-500 mt-1.5">📅 Due {task.due_date}</p>
+                    )}
+                    {task.total_time > 0 && (
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">⏱ Time: {task.total_time} min</p>
                     )}
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
